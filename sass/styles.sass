@@ -1,0 +1,545 @@
+@import "mixins"
+
+// Variables 
+$brand-red: #e74c3c
+
+/* global and reusable styles */
+body
+	margin: 0
+	padding: 0
+	font-family: Helvetica
+	line-height: 20px
+	min-width: 485px
+
+.wrapper
+	max-width: 1200px
+	+push--auto
+	padding: 20px
+
+.container
+	display: flex
+	position: relative
+	flex-wrap: wrap
+
+p
+	opacity: 0.5
+	line-height: 25px
+
+.img-responsive
+	width: 100%
+	height: 100%
+
+/* Header */
+header 
+	background: url("../img/header-background.jpg") no-repeat center
+	background-size: cover
+	text-align: center
+	padding-top: 100px
+	height: 600px
+
+.logo
+	background: url("../img/logo.png") no-repeat
+	+size(144px 78px)
+	display: inline-flex
+	+hide-text
+
+.platforms
+	margin: 30px 
+	a
+		display: inline-flex
+		margin: 0 5px
+		+size(50px 50px)
+		border-radius: 50%
+		background-color: rgba(0, 0, 0, 0.3)
+		background-repeat: no-repeat
+		transition: background-color 0.1s ease-in
+		&:hover
+			background-color: rgba(0, 0, 0, 1.0)
+	a.ios
+		background-image: url("../img/platforms/ios.png")
+		background-position: 49% 47%
+	a.android
+		background-image: url("../img/platforms/android.png")
+		background-position: 50%
+	a.windows
+		background-image: url("../img/platforms/windows.png")
+		background-position: 47% 50% 
+
+.downArrow
+	background: url("../img/arrow.png") no-repeat center
+	+size(50px 15px)
+	display: inline-flex
+
+/* Features */
+.features
+	margin-bottom: 150px
+	.container
+		justify-content: space-between
+		flex-wrap: nowrap
+	.iphone	
+		width: 464px
+		position: absolute
+		top: -360px
+		display: block
+		+push--auto
+		right: 0
+		left: 0
+	.column
+		width: 300px
+		display: flex
+		flex-direction: column
+
+/* Dots */
+.dots
+	position: relative
+	+size(0px)
+
+.dot
+	+size(16px)
+	background: #fff
+	border-radius: 50%
+	transition: background .2s ease-in-out
+
+.dot.hover
+	background: $brand-red
+
+.dotContainer
+	+size(26px)
+	position: absolute
+	background: rgba(255, 255, 255, 0.2)
+	z-index: 2
+	border-radius: 50%
+	display: flex
+	justify-content: center
+	align-items: center
+	transition: all .2s ease-in-out
+	cursor: pointer
+
+.dotContainer.hover
+	+size(32px)
+
+/* FirstDot */
+.firstDot
+	top: 290px
+	left: 146px
+
+.firstDot.hover
+	top: 287px
+	left: 143px
+
+/* All lines */
+.firstLine,
+.secondLine,
+.thirdLine,
+.fourthLine
+	position: relative
+	&::before, 
+	&::after
+		visibility: hidden
+		z-index: 2
+		+pseudo
+		+size(1px)
+		background: #000
+		transform-origin: right
+	&::before
+		transition: transform .2s ease-out
+	&::after
+		transition: transform .2s ease-out .2s
+
+/* FirstLine */
+.firstLine
+	&::before
+		left: 148px
+		top: 315px
+		transform: rotate(-45deg)
+	&::after
+		left: 43px
+		top: 421px
+		transform: rotate(-10deg)
+
+.firstLine.hover
+	&::before
+		visibility: visible
+		transform: rotate(-45deg) scaleX(150)
+	&::after
+		visibility: visible
+		transform: rotate(-10deg) scaleX(80)
+	
+/* SecondDot */
+.secondDot
+	left: 146px
+	top: 500px
+
+.secondDot.hover
+	top: 497px
+	left: 143px
+
+/* SecodLine */
+.secondLine
+	&::before
+		left: 143px
+		top: 521px
+		transform: rotate(-20deg)
+	&::after
+		left: 3px
+		top: 572px
+		transform: rotate(-2deg)
+
+.secondLine.hover
+	&::before
+		visibility: visible
+		transform: rotate(-20deg) scaleX(150)
+	&::after
+		visibility: visible
+		transform: rotate(-2deg) scaleX(50)
+
+/* ThirdDot */
+.thirdDot
+	left: 296px
+	top: 195px
+
+.thirdDot.hover
+	left: 293px
+	top: 192px
+
+/* ThirdLine */
+.thirdLine
+	&::before
+		left: 315px
+		top: 222px
+		transform: rotate(240deg)
+	&::after
+		left: 415px
+		top: 395px
+		transform: rotate(200deg)	
+
+.thirdLine.hover
+	&::before
+		visibility: visible
+		transform: rotate(240deg) scaleX(200)
+	&::after
+		visibility: visible
+		transform: rotate(200deg) scaleX(60)
+/* FourthDot */
+.fourthDot
+	left: 296px
+	top: 405px
+
+.fourthDot.hover
+	left: 293px
+	top: 402px
+
+/* FourthLine */
+.fourthLine
+	&::before
+		left: 318px
+		top: 430px
+		transform: rotate(222deg)
+	&::after
+		left: 421px
+		top: 523px
+		transform: rotate(190deg)
+
+.fourthLine.hover
+	&::before
+		visibility: visible
+		transform: rotate(222deg) scaleX(140)
+	&::after
+		visibility: visible
+		transform: rotate(190deg) scaleX(50)
+
+/* About */
+.about
+	padding: 30px 0
+	background: #e8e8e8
+	.container
+		justify-content: center
+	article
+		width: 500px
+		padding: 20px
+	img
+		max-width: 500px
+		width: 100%
+		height: 100%
+
+.bullets
+	list-style-type: none 
+	padding-left: 10px
+	li
+		p
+			display: inline
+		&::before
+			content: url(../img/bullet.png)
+			padding-right: 10px
+
+/* Advantages */
+.advantages
+	.container
+		justify-content: center
+	.adv
+		width: 375px
+		margin: 20px 5px
+		padding: 20px 20px
+		text-align: center
+		position: relative
+		box-sizing: border-box
+
+.section-description
+	text-align: center
+	max-width: 1000px
+	margin: auto
+
+.flat-design::after,
+.marketable::after,
+.edit-colors::after,
+.user-friendly::after
+	+pseudo
+	+line-right
+
+.edit-colors::before,
+.user-friendly::before,
+.editable::before
+	+pseudo
+	+line-top
+
+/* Pricing */
+.pricing
+	background-color: #e8e8e8
+	.container
+		justify-content: center
+		position: relative
+		align-items: flex-start
+		bottom: -70px
+		margin-top: -50px	
+
+.plan
+	margin: 1px
+	text-align: center
+	background: #fff
+	.title
+		color: #fff
+		padding: 17px 
+		width: 240px
+		background: #322e2e
+		font-weight: normal
+		margin-top: 0
+	.price
+		font-size: 40px
+		font-weight: bold
+		letter-spacing: -1px
+		sup
+			font-size: 28px
+	.features
+		list-style-type: none
+		padding: 0
+		margin: 16px 0
+		li
+			margin: 20px
+			opacity: 0.6
+			position: relative
+			&::before
+				+pseudo
+				height: 1px
+				background: #000
+				right: 0
+				left: 0
+				top: -10px
+				opacity: 0.6
+	.bg
+		background: #322e2e
+		height: 54px
+	.purchase-btn
+		margin: 10px
+		background: rgba(255, 255, 255, 0.2)
+		cursor: pointer
+		text-transform: uppercase
+		padding: 10px 20px
+		font-weight: bold
+		color: #fff
+		border: 0
+		transition: background .1s ease-in-out
+		&:hover
+			background: rgba(255, 255, 255, 0.4)
+
+.plan.highlighted
+	position: relative
+	top: -20px
+	.title
+		background: $brand-red
+	.bg
+		background: $brand-red
+
+/* Testimonials */
+.testimonials
+	padding-top: 60px
+	text-align: center
+	.container
+		min-height: 100px
+	.testimonial
+		opacity: 0
+		transition: opacity .3s ease-in
+		max-width: 600px
+		margin: auto
+		position: absolute
+		right: 0
+		left: 0
+		.text
+			font-style: italic
+			font-size: 18px
+		.author
+			font-size: 16px
+			font-weight: bold
+	.testimonial.shown
+		opacity: 1
+
+.pagination-bullet
+	display: inline-block
+	border: 1px solid $brand-red
+	height: 10px
+	width: 10px
+	border-radius: 50%
+	margin: 30px auto
+	cursor: pointer
+	&:hover
+		background: $brand-red
+
+.pagination-bullet.current
+	background: $brand-red
+
+/* Subscribe */
+.subscribe
+	padding: 30px 0
+	background: url('../img/subscribe-bg.jpg') center no-repeat 
+	background-size: cover
+	.container
+		justify-content: center
+		align-items: center
+		flex-direction: column
+
+input[name="email"]
+	background: rgba(0, 0, 0, 0.5)
+	padding: 18px
+	border: 0
+	width: 200px
+	color: #e3e3e3
+	+placeholder
+		text-transform: uppercase
+		font-weight: bold
+		font-size: 12px
+		transition: opacity .2s ease-in
+
+input[name="email"]:focus
+	+placeholder
+		opacity: 0
+
+.subscribe-btn
+	border: 0
+	height: 100%
+	background: $brand-red
+	color: #e3e3e3
+	cursor: pointer
+	padding: 19px
+	text-transform: uppercase
+	font-size: 12px
+	font-weight: bold
+	transition: background .1s 
+	&:hover
+		background: lighten($brand-red, 2%)
+
+/* Get in Touch */
+.get-in-touch
+	.container
+		flex-direction: column
+		align-items: center
+
+.social-links
+	a
+		display: inline-block
+		+size(35px)
+		border-radius: 50%
+		background-color: #d4d4d4	
+		background-position: center
+		background-repeat: no-repeat
+		transition: background-color .1s 
+		&:hover
+			background-color: $brand-red
+	.twitter
+		background-image: url('../img/social_icons/twitter.png')
+	.facebook	
+		background-image: url('../img/social_icons/facebook.png')
+	.pinterest
+		background-image: url('../img/social_icons/pinterest.png')
+	.google
+		background-image: url('../img/social_icons/google+.png')
+	.linkedin
+		background-image: url('../img/social_icons/linkedin.png')
+	.youtube
+		background-image: url('../img/social_icons/youtube.png')
+
+/* Footer */
+footer
+	background: #e8e8e8
+	padding: 20px 0
+	.container
+		justify-content: center
+	a
+		display: inline-block
+		color: #000
+		opacity: 0.5
+		text-decoration: none
+		margin: 10px 15px
+		&:hover
+			opacity: 0.4
+
+/*///////////////*/
+
+/* media queries */
+@media(max-width: 739px)
+	.plan.highlighted
+		top: 0
+
+@media(max-width: 811px)
+	.flat-design::after,
+	.adv.edit-photos::after,
+	.user-friendly::after
+		display: none
+
+	.marketable::before
+		+pseudo
+		+line-top
+
+@media(max-width: 1000px)
+	.line
+		display: none
+
+	.feature
+		opacity: 0
+		transition: opacity .3s ease-out
+		padding: 20px 10px
+
+	.feature.show
+		opacity: 1
+		z-index: 5
+		background: rgba(255, 255, 255, 0.7)
+		border-radius: 10px
+
+@media(min-width: 719px) and (max-width: 1104px)  
+	.plan
+		margin: 0 43px 25px 43px
+
+@media(max-width: 1170px)
+	.line
+		&::after
+			display: none
+
+@media(max-width: 1200px)
+	.marketable::after,
+	.edit-colors::after
+		display: none
+
+	.edit-photos::after
+		+pseudo
+		+line-right
+	.edit-photos::before
+		+pseudo
+		+line-top

@@ -1,0 +1,100 @@
+@mixin push--auto {
+	margin: {  
+		left: auto;
+		right: auto;
+	}
+}
+
+@mixin pseudo($display: block, $pos: absolute, $content: ''){
+	content: $content;
+	display: $display;
+	position: $pos;
+}
+
+@mixin prefixer($property, $value, $prefixes) {
+  @each $prefix in $prefixes {
+    @if $prefix == webkit {
+      @if $prefix-for-webkit {
+        -webkit-#{$property}: $value;
+      }
+    } @else if $prefix == moz {
+      @if $prefix-for-mozilla {
+        -moz-#{$property}: $value;
+      }
+    } @else if $prefix == ms {
+      @if $prefix-for-microsoft {
+        -ms-#{$property}: $value;
+      }
+    } @else if $prefix == o {
+      @if $prefix-for-opera {
+        -o-#{$property}: $value;
+      }
+    } @else if $prefix == spec {
+      @if $prefix-for-spec {
+        #{$property}: $value;
+      }
+    } @else  {
+      @warn "Unrecognized prefix: #{$prefix}";
+    }
+  }
+}
+
+@mixin size($value) {
+  $width: nth($value, 1);
+  $height: $width;
+
+  @if length($value) > 1 {
+    $height: nth($value, 2);
+  }
+
+  @if is-size($height) {
+    height: $height;
+  } @else {
+    @warn "`#{$height}` is not a valid length for the `$height` parameter in the `size` mixin.";
+  }
+
+  @if is-size($width) {
+    width: $width;
+  } @else {
+    @warn "`#{$width}` is not a valid length for the `$width` parameter in the `size` mixin.";
+  }
+
+}
+
+@mixin hide-text($height: null) {
+  overflow: hidden;
+  text-indent: 101%;
+  white-space: nowrap;
+
+  @if $height {
+    @warn "The `hide-text` mixin has changed and no longer requires a height. The height argument will no longer be accepted in v5.0.0";
+  }
+}
+
+@mixin placeholder {
+  $placeholders: ":-webkit-input" ":-moz" "-moz" "-ms-input";
+  @each $placeholder in $placeholders {
+    &:#{$placeholder}-placeholder {
+      @content;
+    }
+  }
+}
+
+// only for current project 
+@mixin line-top {
+	top: -21px;
+	right: 44px;
+	width: 80%;
+	height: 1px;
+	background: #000;
+	opacity: 0.1;
+}
+
+@mixin line-right {
+	top: 10px;
+	right: 0;
+	height: 90%;
+	width: 1px;
+	background: #000;
+	opacity: 0.1;
+}
